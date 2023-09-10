@@ -23,7 +23,7 @@ test.skip("webp", async (t) => {
 
 test("avif", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.avif"));
-	const result = await optimizeImage(file, { quality: 75 });
+	const result = await optimizeImage(file);
 
 	t.truthy(
 		result.byteLength < file.length,
@@ -31,6 +31,7 @@ test("avif", async (t) => {
 	);
 });
 
+// Nothing is implemented for ICO
 test.skip("ico", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.ico"));
 	const result = await optimizeImage(file);
@@ -43,7 +44,7 @@ test.skip("ico", async (t) => {
 
 test("jpg", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.jpg"));
-	const result = await optimizeImage(file, { quality: 75 });
+	const result = await optimizeImage(file);
 
 	t.truthy(
 		result.byteLength < file.length,
@@ -61,6 +62,7 @@ test("png", async (t) => {
 	);
 });
 
+// Nothing is implemented for SVG
 test.skip("svg", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.svg"));
 	const result = await optimizeImage(file);

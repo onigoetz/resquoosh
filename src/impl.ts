@@ -1,5 +1,8 @@
 import { codecs as supportedFormats, preprocessors } from "./codecs";
 import ImageData from "./image_data";
+import { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc";
+import { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc";
+import { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
 
 type EncoderKey = keyof typeof supportedFormats;
 
@@ -58,11 +61,14 @@ export async function encodeJpeg(
 	image = ImageData.from(image);
 
 	const e = supportedFormats["mozjpeg"];
+
+	const options: EncodeJpegOptions = { ...e.defaultEncoderOptions };
+	if (quality) {
+		options.quality = quality;
+	}
+
 	const m = await e.enc();
-	const r = await m.encode(image.data, image.width, image.height, {
-		...e.defaultEncoderOptions,
-		quality,
-	});
+	const r = await m.encode(image.data, image.width, image.height, options);
 	return Buffer.from(r);
 }
 
@@ -73,11 +79,14 @@ export async function encodeWebp(
 	image = ImageData.from(image);
 
 	const e = supportedFormats["webp"];
+
+	const options: EncodeWebpOptions = { ...e.defaultEncoderOptions };
+	if (quality) {
+		options.quality = quality;
+	}
+
 	const m = await e.enc();
-	const r = await m.encode(image.data, image.width, image.height, {
-		...e.defaultEncoderOptions,
-		quality,
-	});
+	const r = await m.encode(image.data, image.width, image.height, options);
 	return Buffer.from(r);
 }
 
@@ -89,13 +98,20 @@ export async function encodeAvif(
 
 	const e = supportedFormats["avif"];
 	const m = await e.enc();
-	const val = e.autoOptimize.min || 62;
-	const r = await m.encode(image.data, image.width, image.height, {
+	
+	const options: EncodeAvifOptions = {
 		...e.defaultEncoderOptions,
+	};
+
+	if (quality) {
+		const avifQuality = Math.max(quality - 20, 0);
+		const val = e.autoOptimize.min || 62;
 		// Think of cqLevel as the "amount" of quantization (0 to 62),
 		// so a lower value yields higher quality (0 to 100).
-		cqLevel: Math.round(val - (quality / 100) * val),
-	});
+		options.cqLevel = Math.round(val - (avifQuality / 100) * val);
+	}
+
+	const r = await m.encode(image.data, image.width, image.height, options);
 	return Buffer.from(r);
 }
 

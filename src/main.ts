@@ -76,7 +76,9 @@ export async function processBuffer(
 	for (const operation of operations) {
 		if (operation.type === "rotate") {
 			imageData = await worker.rotate(imageData, operation.numRotations);
-		} else if (operation.type === "resize") {
+			continue;
+		} 
+		if (operation.type === "resize") {
 			const opt = { image: imageData, width: 0, height: 0 };
 			if (
 				operation.width &&
@@ -105,12 +107,7 @@ export async function processBuffer(
 		case "webp":
 			return Buffer.from(await worker.encodeWebp(imageData, { quality }));
 		case "avif":
-			const avifQuality = quality - 20;
-			return Buffer.from(
-				await worker.encodeAvif(imageData, {
-					quality: Math.max(avifQuality, 0),
-				}),
-			);
+			return Buffer.from(await worker.encodeAvif(imageData, { quality }));
 		case "png":
 			return Buffer.from(await worker.encodePng(imageData));
 		default:
