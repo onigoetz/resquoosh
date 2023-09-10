@@ -98,7 +98,7 @@ export async function encodeAvif(
 
 	const e = supportedFormats["avif"];
 	const m = await e.enc();
-	
+
 	const options: EncodeAvifOptions = {
 		...e.defaultEncoderOptions,
 	};

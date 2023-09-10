@@ -77,7 +77,7 @@ export async function processBuffer(
 		if (operation.type === "rotate") {
 			imageData = await worker.rotate(imageData, operation.numRotations);
 			continue;
-		} 
+		}
 		if (operation.type === "resize") {
 			const opt = { image: imageData, width: 0, height: 0 };
 			if (
