@@ -1,0 +1,24 @@
+{
+  "name": "@onigoetz/resquoosh",
+  "dependencies": {
+    "get-orientation": "^1.1.2",
+    "image-size": "^1.0.2",
+    "jest-worker": "^29.6.4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.1.1",
+    "@onigoetz/gulp-typescript": "^6.0.0-alpha.1",
+    "@types/node": "^20.6.0",
+    "ava": "^5.3.1",
+    "c8": "^8.0.1",
+    "typescript": "^5.2.2",
+    "vinyl-fs": "^4.0.0"
+  },
+  "scripts": {
+    "build": "node build.js",
+    "format": "biome format src test",
+    "check": "biome check src test",
+    "test": "ava test/*\\.test\\.js",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.js"
+  }
+}
