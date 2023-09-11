@@ -15,8 +15,7 @@ const filesToCompress = [
 ];
 
 const filesToPassThrough = [
-	// TODO :: animated webp isn't decoded correctly
-	//["webp animated", "images/animated.webp"],
+	["webp animated", "images/animated.webp"],
 	["ico", "images/test.ico"],
 	["svg", "images/test.svg"],
 ];

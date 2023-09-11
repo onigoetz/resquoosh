@@ -15,7 +15,7 @@ type ResizeOperation = {
 	| { width: number; height: number }
 );
 export type Operation = RotateOperation | ResizeOperation;
-export type Encoding = "jpeg" | "png" | "webp" | "avif";
+export type Encoding = "mozjpeg" | "oxipng" | "webp" | "avif";
 
 let workerStarted = false;
 
@@ -102,13 +102,13 @@ export async function processBuffer(
 	}
 
 	switch (encoding) {
-		case "jpeg":
+		case "mozjpeg":
 			return Buffer.from(await worker.encodeJpeg(imageData, { quality }));
 		case "webp":
 			return Buffer.from(await worker.encodeWebp(imageData, { quality }));
 		case "avif":
 			return Buffer.from(await worker.encodeAvif(imageData, { quality }));
-		case "png":
+		case "oxipng":
 			return Buffer.from(await worker.encodePng(imageData));
 		default:
 			throw Error(`Unsupported encoding format`);

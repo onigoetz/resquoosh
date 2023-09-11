@@ -1,22 +1,15 @@
 import { codecs as supportedFormats, preprocessors } from "./codecs";
 import ImageData from "./image_data";
-import { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc";
-import { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc";
-import { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
-
-type EncoderKey = keyof typeof supportedFormats;
+import { detectCodec } from "./detectors";
+import type { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc";
+import type { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc";
+import type { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
 
 export async function decodeBuffer(
 	_buffer: Buffer | Uint8Array,
 ): Promise<ImageData> {
 	const buffer = Buffer.from(_buffer);
-	const firstChunk = buffer.slice(0, 16);
-	const firstChunkString = Array.from(firstChunk)
-		.map((v) => String.fromCodePoint(v))
-		.join("");
-	const key = Object.entries(supportedFormats).find(([, { detectors }]) =>
-		detectors.some((detector) => detector.exec(firstChunkString)),
-	)?.[0] as EncoderKey | undefined;
+	const key = detectCodec(buffer);
 	if (!key) {
 		throw Error(`Buffer has an unsupported format`);
 	}

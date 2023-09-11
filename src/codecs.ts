@@ -1,6 +1,7 @@
 import { promises as fsp } from "fs";
 import * as path from "path";
 import { instantiateEmscriptenWasm, pathify } from "./emscripten-utils";
+import { SupportedCodecs } from "./detectors";
 
 interface DecodeModule extends EmscriptenWasm.Module {
 	decode: (data: Uint8Array) => ImageData;
@@ -213,11 +214,17 @@ export const preprocessors = {
 	},
 } as const;
 
-export const codecs = {
+interface Codec {
+	name: string;
+	dec: () => Promise<DecodeModule>;
+	enc: () => Promise<EncodeModule>;
+	defaultEncoderOptions: any;
+	autoOptimize: any;
+}
+
+export const codecs: { [codec in SupportedCodecs]: Codec } = {
 	mozjpeg: {
 		name: "MozJPEG",
-		extension: "jpg",
-		detectors: [/^\xFF\xD8\xFF/],
 		dec: () =>
 			instantiateEmscriptenWasm(mozDec as DecodeModuleFactory, mozDecWasm),
 		enc: () =>
@@ -251,8 +258,6 @@ export const codecs = {
 	},
 	webp: {
 		name: "WebP",
-		extension: "webp",
-		detectors: [/^RIFF....WEBPVP8[LX ]/s],
 		dec: () =>
 			instantiateEmscriptenWasm(webpDec as DecodeModuleFactory, webpDecWasm),
 		enc: () =>
@@ -297,9 +302,6 @@ export const codecs = {
 	},
 	avif: {
 		name: "AVIF",
-		extension: "avif",
-		// eslint-disable-next-line no-control-regex
-		detectors: [/^\x00\x00\x00 ftypavif\x00\x00\x00\x00/],
 		dec: () =>
 			instantiateEmscriptenWasm(avifDec as DecodeModuleFactory, avifDecWasm),
 		enc: async () => {
@@ -328,9 +330,6 @@ export const codecs = {
 	},
 	oxipng: {
 		name: "OxiPNG",
-		extension: "png",
-		// eslint-disable-next-line no-control-regex
-		detectors: [/^\x89PNG\x0D\x0A\x1A\x0A/],
 		dec: async () => {
 			await pngEncDecInit();
 			return {
