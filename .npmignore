@@ -1,0 +1,11 @@
+.github/
+.yarn/
+src/
+test/
+coverage/
+
+ava.config.js
+biome.json
+tsconfig.json
+.yarnrc.yml
+build.js
