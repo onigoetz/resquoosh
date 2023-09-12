@@ -1,11 +1,7 @@
 const test = require("ava");
 const fs = require("fs/promises");
 const path = require("path");
-const { optimizeImage, stopWorker } = require("../dist/index.js");
-
-test.after.always(() => {
-	stopWorker();
-});
+const { optimizeImage } = require("../dist/index.js");
 
 const filesToCompress = [
 	["webp", "images/test.webp"],

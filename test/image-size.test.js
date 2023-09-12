@@ -1,11 +1,7 @@
 const test = require("ava");
 const fs = require("fs/promises");
 const path = require("path");
-const { getImageSize, stopWorker } = require("../dist/index.js");
-
-test.after.always(() => {
-	stopWorker();
-});
+const { getImageSize } = require("../dist/index.js");
 
 test("webp", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/animated.webp"));

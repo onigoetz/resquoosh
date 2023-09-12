@@ -1,11 +1,7 @@
 const test = require("ava");
 const fs = require("fs/promises");
 const path = require("path");
-const { optimizeImage, getImageSize, stopWorker } = require("../dist/index.js");
-
-test.after.always(() => {
-	stopWorker();
-});
+const { optimizeImage, getImageSize } = require("../dist/index.js");
 
 const filesToResize = [
 	["webp", "images/test.webp"],

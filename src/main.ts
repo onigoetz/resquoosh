@@ -48,14 +48,6 @@ const getWorker = execOnce(() => {
 // enable instead of the real worker
 //const getWorker: () => typeof import("./impl") = () => impl;
 
-export function stopWorker() {
-	if (workerStarted) {
-		// TODO :: restore feature
-		//getWorker().end();
-		workerStarted = false;
-	}
-}
-
 export async function getMetadata(
 	buffer: Buffer,
 ): Promise<{ width: number; height: number }> {

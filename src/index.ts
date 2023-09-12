@@ -1,7 +1,7 @@
 import { getOrientation, Orientation } from "get-orientation";
 import imageSizeOf from "image-size";
 
-import { processBuffer, decodeBuffer, stopWorker } from "./main";
+import { processBuffer, decodeBuffer } from "./main";
 import detectors, { detectCodec } from "./detectors";
 
 // Do not import anything other than types from this module
@@ -75,5 +75,3 @@ export async function getImageSize(buffer: Buffer): Promise<{
 	const { width, height } = imageSizeOf(buffer);
 	return { width, height };
 }
-
-export { stopWorker };

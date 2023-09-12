@@ -7,7 +7,7 @@ This version has a simple API.
 
 ```javascript
 import fs from "fs/promises";
-import { optimizeImage, getImageSize, stopWorker } from "@onigoetz/resquoosh";
+import { optimizeImage, getImageSize } from "@onigoetz/resquoosh";
 
 const file = await fs.readFile("file.jpg");
 
@@ -16,10 +16,6 @@ console.log(size); // { width: 400, height: 400 }
 
 const optimized = await optimizeImage(file);
 // returns an optimized buffer
-
-// Don't forget to stop the worker 
-// once you're done compressing images
-stopWorker();
 ```
 
 ## `getImageSize(buffer: Buffer) => Promise<{ width: number, height: number }>`
