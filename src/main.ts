@@ -60,7 +60,7 @@ function releaseWorker() {
 }
 
 class WorkerHandle implements Disposable {
-	#worker: ImageWorker;
+	private instance: ImageWorker;
 
 	/**
 	 * Put the worker behind a getter so we make sure to
@@ -68,11 +68,11 @@ class WorkerHandle implements Disposable {
 	 * 2. Make sure to take only one handle in a WorkerHandle
 	 */
 	get worker(): ImageWorker {
-		if (!this.#worker) {
-			this.#worker = getWorker();
+		if (!this.instance) {
+			this.instance = getWorker();
 		}
 
-		return this.#worker;
+		return this.instance;
 	}
 
 	[Symbol.dispose]() {
