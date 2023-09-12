@@ -1,5 +1,6 @@
 {
   "name": "@onigoetz/resquoosh",
+  "version": "1.0.0",
   "dependencies": {
     "get-orientation": "^1.1.2",
     "image-size": "^1.0.2",
