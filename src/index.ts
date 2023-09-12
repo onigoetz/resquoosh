@@ -40,18 +40,19 @@ export async function optimizeImage(
 
 	const operations: Operation[] = [];
 
-	// Begin Squoosh transformation logic
 	const orientation = await getOrientation(buffer);
-	if (orientation === Orientation.RIGHT_TOP) {
-		operations.push({ type: "rotate", numRotations: 1 });
-	} else if (orientation === Orientation.BOTTOM_RIGHT) {
-		operations.push({ type: "rotate", numRotations: 2 });
-	} else if (orientation === Orientation.LEFT_BOTTOM) {
-		operations.push({ type: "rotate", numRotations: 3 });
-	} else {
+	switch (orientation) {
+		case Orientation.RIGHT_TOP:
+			operations.push({ type: "rotate", numRotations: 1 });
+			break;
+		case Orientation.BOTTOM_RIGHT:
+			operations.push({ type: "rotate", numRotations: 2 });
+			break;
+		case Orientation.LEFT_BOTTOM:
+			operations.push({ type: "rotate", numRotations: 3 });
+			break;
+
 		// TODO: support more orientations
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		// const _: never = orientation
 	}
 
 	if (width || height) {
