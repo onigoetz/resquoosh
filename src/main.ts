@@ -1,7 +1,7 @@
 import { Worker } from "jest-worker";
 import * as path from "path";
 import { cpus } from "os";
-//import * as impl from "./impl.js";
+import type { Encoding } from "./detectors";
 
 type RotateOperation = {
 	type: "rotate";
@@ -15,7 +15,6 @@ type ResizeOperation = {
 	| { width: number; height: number }
 );
 export type Operation = RotateOperation | ResizeOperation;
-export type Encoding = "mozjpeg" | "oxipng" | "webp" | "avif";
 
 let workerStarted = false;
 

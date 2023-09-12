@@ -1,7 +1,7 @@
 import { promises as fsp } from "fs";
 import * as path from "path";
 import { instantiateEmscriptenWasm, pathify } from "./emscripten-utils";
-import { SupportedCodecs } from "./detectors";
+import { Encoding } from "./detectors";
 
 interface DecodeModule extends EmscriptenWasm.Module {
 	decode: (data: Uint8Array) => ImageData;
@@ -231,7 +231,7 @@ interface Codec {
 	autoOptimize: any;
 }
 
-export const codecs: { [codec in SupportedCodecs]: Codec } = {
+export const codecs: { [codec in Encoding]: Codec } = {
 	mozjpeg: {
 		name: "MozJPEG",
 		dec: () =>

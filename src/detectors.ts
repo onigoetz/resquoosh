@@ -1,7 +1,7 @@
-export type SupportedCodecs = "mozjpeg" | "webp" | "avif" | "oxipng";
+export type Encoding = "mozjpeg" | "oxipng" | "webp" | "avif";
 
 const detectors: {
-	[codec in SupportedCodecs]: (buffer: Buffer) => boolean;
+	[codec in Encoding]: (buffer: Buffer) => boolean;
 } = {
 	mozjpeg: (buffer) => [0xff, 0xd8, 0xff].every((b, i) => buffer[i] === b),
 	webp: (buffer) => {
@@ -32,8 +32,8 @@ const detectors: {
 
 export default detectors;
 
-export function detectCodec(buffer: Buffer): SupportedCodecs | undefined {
+export function detectCodec(buffer: Buffer): Encoding | undefined {
 	return Object.entries(detectors).find(([, detector]) =>
 		detector(buffer),
-	)?.[0] as SupportedCodecs | undefined;
+	)?.[0] as Encoding | undefined;
 }
