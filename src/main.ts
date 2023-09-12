@@ -1,6 +1,6 @@
-import { Worker } from "jest-worker";
-import * as path from "path";
 import { cpus } from "os";
+import * as path from "path";
+import { Worker } from "jest-worker";
 import type { Encoding } from "./detectors";
 
 type RotateOperation = {
@@ -45,7 +45,7 @@ function getWorker() {
 }
 
 function shutdownWorker() {
-	if (workerHandles == 0) {
+	if (workerHandles === 0) {
 		worker.end();
 		worker = null;
 	}
@@ -133,7 +133,7 @@ export async function processBuffer(
 		case "oxipng":
 			return Buffer.from(await worker.worker.encodePng(imageData));
 		default:
-			throw Error(`Unsupported encoding format`);
+			throw Error("Unsupported encoding format");
 	}
 }
 

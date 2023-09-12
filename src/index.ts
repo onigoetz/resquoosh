@@ -1,8 +1,8 @@
-import { getOrientation, Orientation } from "get-orientation";
+import { Orientation, getOrientation } from "get-orientation";
 import imageSizeOf from "image-size";
 
-import { processBuffer, decodeBuffer } from "./main";
 import detectors, { detectCodec } from "./detectors";
+import { decodeBuffer, processBuffer } from "./main";
 
 // Do not import anything other than types from this module
 // because it will throw an error when using `outputFileTracing`

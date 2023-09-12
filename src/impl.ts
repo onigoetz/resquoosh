@@ -1,9 +1,9 @@
+import type { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
 import { codecs as supportedFormats, preprocessors } from "./codecs";
-import ImageData from "./image_data";
 import type { Encoding } from "./detectors";
+import ImageData from "./image_data";
 import type { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc";
 import type { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc";
-import type { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
 
 export async function decodeBuffer(
 	_buffer: Buffer | Uint8Array,
@@ -22,7 +22,7 @@ export async function rotate(
 ): Promise<ImageData> {
 	image = ImageData.from(image);
 
-	const m = await preprocessors["rotate"].instantiate();
+	const m = await preprocessors.rotate.instantiate();
 	return await m(image.data, image.width, image.height, { numRotations });
 }
 
@@ -35,7 +35,7 @@ type ResizeOpts = { image: ImageData } & (
 export async function resize({ image, width, height }: ResizeOpts) {
 	image = ImageData.from(image);
 
-	const p = preprocessors["resize"];
+	const p = preprocessors.resize;
 	const m = await p.instantiate();
 	return await m(image.data, image.width, image.height, {
 		...p.defaultOptions,
@@ -50,7 +50,7 @@ export async function encodeJpeg(
 ): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
-	const e = supportedFormats["mozjpeg"];
+	const e = supportedFormats.mozjpeg;
 
 	const options: EncodeJpegOptions = { ...e.defaultEncoderOptions };
 	if (quality) {
@@ -68,7 +68,7 @@ export async function encodeWebp(
 ): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
-	const e = supportedFormats["webp"];
+	const e = supportedFormats.webp;
 
 	const options: EncodeWebpOptions = { ...e.defaultEncoderOptions };
 	if (quality) {
@@ -86,7 +86,7 @@ export async function encodeAvif(
 ): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
-	const e = supportedFormats["avif"];
+	const e = supportedFormats.avif;
 	const m = await e.enc();
 
 	const options: EncodeAvifOptions = {
@@ -110,7 +110,7 @@ export async function encodePng(
 ): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
-	const e = supportedFormats["oxipng"];
+	const e = supportedFormats.oxipng;
 	const m = await e.enc();
 	const r = await m.encode(image.data, image.width, image.height, {
 		...e.defaultEncoderOptions,

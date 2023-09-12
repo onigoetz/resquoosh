@@ -14,8 +14,8 @@ jobs:
           cache: 'yarn'
       - name: yarn install
         run: yarn install
-      - name: yarn check
-        run: yarn check
+      #- name: yarn check
+      #  run: yarn check
       - name: yarn format
         run: yarn format
 

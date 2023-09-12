@@ -10,7 +10,7 @@ export function pathify(path: string): string {
 export function instantiateEmscriptenWasm<T extends EmscriptenWasm.Module>(
 	factory: EmscriptenWasm.ModuleFactory<T>,
 	path: string,
-	workerJS: string = "",
+	workerJS = "",
 ): Promise<T> {
 	return factory({
 		locateFile(requestPath) {
