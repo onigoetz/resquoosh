@@ -34,14 +34,10 @@ Compresses images, optionally resize or rotate the image.
 
 ### Supported formats
 
-- webp
+- webp (Except animated webp)
 - avif
 - jpeg
 - png
-
-maybe in the future:
-- gif
-- ico
 
 ### Supported options
 

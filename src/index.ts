@@ -54,12 +54,9 @@ export async function optimizeImage(
 		// const _: never = orientation
 	}
 
-	// TODO :: enable optional resizing
-	/*if (height) {
+	if (width || height) {
       operations.push({ type: 'resize', width, height })
-    } else {
-      operations.push({ type: 'resize', width })
-    }*/
+    }
 
 	return await processBuffer(buffer, operations, encoding, quality);
 }
