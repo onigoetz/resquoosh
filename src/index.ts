@@ -55,8 +55,8 @@ export async function optimizeImage(
 	}
 
 	if (width || height) {
-      operations.push({ type: 'resize', width, height })
-    }
+		operations.push({ type: "resize", width, height });
+	}
 
 	return await processBuffer(buffer, operations, encoding, quality);
 }
