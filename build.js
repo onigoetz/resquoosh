@@ -27,9 +27,14 @@ function copyWasm() {
 function buildTs() {
     const tsProject = ts.createProject(path.join(__dirname, "tsconfig.json"));
 
-    return src(["src/**/*.ts", "src/**/*.js"], { sourcemaps: true })
-        .pipe(tsProject())
-        .pipe(peek("writing"))
+    const stream = src(["src/**/*.ts", "src/**/*.js"], { sourcemaps: true })
+        .pipe(tsProject(ts.reporter.longReporter()))
+        .on('error', (e) => {
+            console.error(e.message);
+            process.exitCode = 1;
+        })
+
+    return stream.pipe(peek("writing"))
         .pipe(dest("dist", { sourcemaps: "."}))
     
 }

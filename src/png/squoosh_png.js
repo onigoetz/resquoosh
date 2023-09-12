@@ -1,3 +1,5 @@
+import ImageData from "../image_data";
+
 let wasm;
 
 let cachedTextDecoder = new TextDecoder("utf-8", {

@@ -216,8 +216,17 @@ export const preprocessors = {
 
 interface Codec {
 	name: string;
-	dec: () => Promise<DecodeModule>;
-	enc: () => Promise<EncodeModule>;
+	dec: () => Promise<{
+		decode: (data: Uint8Array) => ImageData;
+	}>;
+	enc: () => Promise<{
+		encode(
+			data: BufferSource,
+			width: number,
+			height: number,
+			options: any,
+		): Uint8Array;
+	}>;
 	defaultEncoderOptions: any;
 	autoOptimize: any;
 }
@@ -333,7 +342,7 @@ export const codecs: { [codec in SupportedCodecs]: Codec } = {
 		dec: async () => {
 			await pngEncDecInit();
 			return {
-				decode: (buffer: Buffer | Uint8Array) => {
+				decode: (buffer: Buffer | Uint8Array): ImageData => {
 					const imageData = pngEncDec.decode(buffer);
 					pngEncDec.cleanup();
 					return imageData;
