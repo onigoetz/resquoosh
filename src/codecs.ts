@@ -1,7 +1,7 @@
 import { promises as fsp } from "fs";
 import * as path from "path";
 import { instantiateEmscriptenWasm, pathify } from "./emscripten-utils";
-import { Encoding } from "./detectors";
+import type { Encoding } from "./detectors";
 
 interface DecodeModule extends EmscriptenWasm.Module {
 	decode: (data: Uint8Array) => ImageData;

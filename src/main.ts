@@ -80,14 +80,6 @@ class WorkerHandle implements Disposable {
 	}
 }
 
-export async function getMetadata(
-	buffer: Buffer,
-): Promise<{ width: number; height: number }> {
-	using worker = new WorkerHandle();
-	const { width, height } = await worker.worker.decodeBuffer(buffer);
-	return { width, height };
-}
-
 export async function processBuffer(
 	buffer: Buffer,
 	operations: Operation[],
@@ -96,7 +88,7 @@ export async function processBuffer(
 ): Promise<Buffer> {
 	using worker = new WorkerHandle();
 
-	let imageData = await worker.worker.decodeBuffer(buffer);
+	let imageData = await worker.worker.decodeBuffer(buffer, encoding);
 	for (const operation of operations) {
 		if (operation.type === "rotate") {
 			imageData = await worker.worker.rotate(imageData, operation.numRotations);
@@ -145,8 +137,8 @@ export async function processBuffer(
 	}
 }
 
-export async function decodeBuffer(buffer: Buffer) {
+export async function decodeBuffer(buffer: Buffer, encoding: Encoding) {
 	using worker = new WorkerHandle();
-	const imageData = await worker.worker.decodeBuffer(buffer);
+	const imageData = await worker.worker.decodeBuffer(buffer, encoding);
 	return imageData;
 }

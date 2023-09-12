@@ -69,7 +69,7 @@ export async function getImageSize(buffer: Buffer): Promise<{
 	// TODO: upgrade "image-size" package to support AVIF
 	// See https://github.com/image-size/image-size/issues/348
 	if (detectors.avif(buffer)) {
-		const { width, height } = await decodeBuffer(buffer);
+		const { width, height } = await decodeBuffer(buffer, "avif");
 		return { width, height };
 	}
 

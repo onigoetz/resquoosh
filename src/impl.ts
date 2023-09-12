@@ -1,19 +1,16 @@
 import { codecs as supportedFormats, preprocessors } from "./codecs";
 import ImageData from "./image_data";
-import { detectCodec } from "./detectors";
+import type { Encoding } from "./detectors";
 import type { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc";
 import type { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc";
 import type { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc";
 
 export async function decodeBuffer(
 	_buffer: Buffer | Uint8Array,
+	encoding: Encoding,
 ): Promise<ImageData> {
 	const buffer = Buffer.from(_buffer);
-	const key = detectCodec(buffer);
-	if (!key) {
-		throw Error(`Buffer has an unsupported format`);
-	}
-	const encoder = supportedFormats[key];
+	const encoder = supportedFormats[encoding];
 	const mod = await encoder.dec();
 	const rgba = mod.decode(new Uint8Array(buffer));
 	return rgba;
