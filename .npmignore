@@ -8,4 +8,4 @@ ava.config.js
 biome.json
 tsconfig.json
 .yarnrc.yml
-build.js
+build.sh
