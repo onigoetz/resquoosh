@@ -1,7 +1,10 @@
-const test = require("ava");
-const fs = require("fs/promises");
-const path = require("path");
-const { optimizeImage } = require("../dist/cjs/index.js");
+import test from "ava";
+import fs from "fs/promises";
+import path from "path";
+import { optimizeImage } from "../dist/mjs/index.js";
+import { fileURLToPath } from "url";
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const filesToCompress = [
 	["webp", "images/test.webp"],
@@ -17,8 +20,8 @@ const filesToPassThrough = [
 ];
 
 for (const [name, fileName] of filesToCompress) {
-	test(`cjs ${name}`, async (t) => {
-		const file = await fs.readFile(path.join(__dirname, fileName));
+	test(`mjs ${name}`, async (t) => {
+		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
 		t.truthy(
@@ -29,8 +32,8 @@ for (const [name, fileName] of filesToCompress) {
 }
 
 for (const [name, fileName] of filesToPassThrough) {
-	test(`cjs ${name}`, async (t) => {
-		const file = await fs.readFile(path.join(__dirname, fileName));
+	test(`mjs ${name}`, async (t) => {
+		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
 		t.truthy(

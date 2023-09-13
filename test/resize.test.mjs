@@ -1,7 +1,10 @@
-const test = require("ava");
-const fs = require("fs/promises");
-const path = require("path");
-const { optimizeImage, getImageSize } = require("../dist/cjs/index.js");
+import test from "ava";
+import fs from "fs/promises";
+import path from "path";
+import { optimizeImage, getImageSize } from "../dist/mjs/index.js";
+import { fileURLToPath } from "url";
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const filesToResize = [
 	["webp", "images/test.webp"],
@@ -11,8 +14,8 @@ const filesToResize = [
 ];
 
 for (const [name, fileName] of filesToResize) {
-	test(`cjs ${name}`, async (t) => {
-		const file = await fs.readFile(path.join(__dirname, fileName));
+	test(`esm ${name}`, async (t) => {
+		const file = await fs.readFile(path.join(dirname, fileName));
 
 		const originalSize = await getImageSize(file);
 		t.deepEqual(originalSize, { width: 400, height: 400 });

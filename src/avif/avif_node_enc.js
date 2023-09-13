@@ -1,4 +1,6 @@
-/* eslint-disable */
+import path from "path";
+import fs from "fs";
+
 var Module = (function () {
 	return function (Module) {
 		Module = Module || {};
@@ -21,28 +23,20 @@ var Module = (function () {
 		var quit_ = function (status, toThrow) {
 			throw toThrow;
 		};
-		var ENVIRONMENT_IS_WEB = false;
-		var ENVIRONMENT_IS_WORKER = false;
 		var ENVIRONMENT_IS_NODE = true;
-		var scriptDirectory = "";
 		function locateFile(path) {
-			if (Module["locateFile"]) {
-				return Module["locateFile"](path, scriptDirectory);
+			if (!Module["locateFile"]) {
+				throw new Error("You need to implement locateFile");
 			}
-			return scriptDirectory + path;
+			return Module["locateFile"](path);
 		}
 		var read_, readBinary;
 		var nodeFS;
 		var nodePath;
 		if (ENVIRONMENT_IS_NODE) {
-			if (ENVIRONMENT_IS_WORKER) {
-				scriptDirectory = require("path").dirname(scriptDirectory) + "/";
-			} else {
-				scriptDirectory = __dirname + "/";
-			}
 			read_ = function shell_read(filename, binary) {
-				if (!nodeFS) nodeFS = require("fs");
-				if (!nodePath) nodePath = require("path");
+				if (!nodeFS) nodeFS = fs;
+				if (!nodePath) nodePath = path;
 				filename = nodePath["normalize"](filename);
 				return nodeFS["readFileSync"](filename, binary ? null : "utf8");
 			};

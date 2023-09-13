@@ -1,4 +1,4 @@
-import ImageData from "../image_data";
+import ImageData from "../image_data.js";
 
 let wasm;
 

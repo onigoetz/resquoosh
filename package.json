@@ -2,12 +2,27 @@
   "name": "@onigoetz/resquoosh",
   "version": "1.0.1",
   "repository": "onigoetz/resquoosh",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/mjs/index.js",
+  "types": "dist/cjs/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/mjs/index.js",
+      "types": "./dist/cjs/index.d.ts"
+    },
+    "./impl.js": {
+      "require": "./dist/cjs/impl.js",
+      "import": "./dist/mjs/impl.js",
+      "types": "./dist/cjs/impl.d.ts"
+    },
+    "./impl.mjs": "./dist/mjs/impl.js",
+    "./impl.cjs": "./dist/cjs/impl.js"
+  },
   "dependencies": {
     "get-orientation": "^1.1.2",
     "image-size": "^1.0.2",
-    "jest-worker": "^29.6.4"
+    "tinypool": "^0.8.1"
   },
   "devDependencies": {
     "@biomejs/biome": "1.1.1",
@@ -19,10 +34,10 @@
     "vinyl-fs": "^4.0.0"
   },
   "scripts": {
-    "build": "node build.js",
+    "build": "./build.sh",
     "format": "biome format src test",
     "check": "biome check src test",
-    "test": "ava test/*\\.test\\.js",
-    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.js"
+    "test": "ava test/*\\.test\\.* ",
+    "test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.*"
   }
 }

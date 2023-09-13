@@ -1,44 +1,44 @@
 const test = require("ava");
 const fs = require("fs/promises");
 const path = require("path");
-const { getImageSize } = require("../dist/index.js");
+const { getImageSize } = require("../dist/cjs/index.js");
 
-test("webp", async (t) => {
+test("cjs webp", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/animated.webp"));
 	const result = await getImageSize(file);
 
 	t.deepEqual(result, { width: 400, height: 400 });
 });
 
-test("avif", async (t) => {
+test("cjs avif", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.avif"));
 	const result = await getImageSize(file);
 
 	t.deepEqual(result, { width: 400, height: 400 });
 });
 
-test("ico", async (t) => {
+test("cjs ico", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.ico"));
 	const result = await getImageSize(file);
 
 	t.deepEqual(result, { width: 256, height: 256 });
 });
 
-test("jpg", async (t) => {
+test("cjs jpg", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.jpg"));
 	const result = await getImageSize(file);
 
 	t.deepEqual(result, { width: 400, height: 400 });
 });
 
-test("png", async (t) => {
+test("cjs png", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.png"));
 	const result = await getImageSize(file);
 
 	t.deepEqual(result, { width: 400, height: 400 });
 });
 
-test("svg", async (t) => {
+test("cjs svg", async (t) => {
 	const file = await fs.readFile(path.join(__dirname, "images/test.svg"));
 	const result = await getImageSize(file);
 

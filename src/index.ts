@@ -1,14 +1,8 @@
 import { Orientation, getOrientation } from "get-orientation";
 import imageSizeOf from "image-size";
 
-import detectors, { detectCodec } from "./detectors";
-import { decodeBuffer, processBuffer } from "./main";
-
-// Do not import anything other than types from this module
-// because it will throw an error when using `outputFileTracing`
-// as `jest-worker` is ignored in file tracing. Use `await import`
-// or `require` instead.
-import type { Operation } from "./main";
+import detectors, { detectCodec } from "./detectors.js";
+import { decodeBuffer, processBuffer, type Operation } from "./main.js";
 
 export interface ImageParamsResult {
 	href: string;

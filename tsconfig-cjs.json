@@ -1,8 +1,9 @@
 {
     "extends": "./tsconfig-base.json",
     "compilerOptions": {
-        "module": "ESNext",
-        "outDir": "dist/mjs",
+        "moduleResolution": "node16",
+        "module": "node16",
+        "outDir": "dist/cjs",
         "target": "es2021"
     }
 }
