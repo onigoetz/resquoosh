@@ -1,5 +1,10 @@
 # Resquoosh
 
+[![Latest version](https://img.shields.io/github/release/onigoetz/resquoosh.svg?style=flat-square)](https://github.com/onigoetz/resquoosh/releases)
+![License](https://img.shields.io/github/license/onigoetz/resquoosh?style=flat-square)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/onigoetz/resquoosh/nodejs.yml?style=flat-square&logo=github)
+[![NPM Downloads](https://img.shields.io/npm/dm/@onigoetz/resquoosh?style=flat-square&logo=npm)](https://www.npmjs.com/package/@onigoetz/resquoosh)
+
 Resquoosh is a fork of [`@squoosh/lib`](https://www.npmjs.com/package/@squoosh/lib).
 But copied from [Vercel's fork](https://github.com/vercel/next.js/tree/canary/packages/next/src/server/lib/squoosh).
 
