@@ -1,8 +1,8 @@
+import fs from "node:fs/promises";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import test from "ava";
-import fs from "fs/promises";
-import path from "path";
 import { getImageSize } from "../dist/mjs/index.js";
-import { fileURLToPath } from "url";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 

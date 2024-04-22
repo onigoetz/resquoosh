@@ -11,7 +11,7 @@ But copied from [Vercel's fork](https://github.com/vercel/next.js/tree/canary/pa
 This version has a simple API.
 
 ```javascript
-import fs from "fs/promises";
+import fs from "node:fs/promises";
 import { optimizeImage, getImageSize } from "@onigoetz/resquoosh";
 
 const file = await fs.readFile("file.jpg");

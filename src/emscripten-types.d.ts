@@ -20,9 +20,9 @@ declare namespace EmscriptenWasm {
 		printErr(str: string): void;
 		arguments: string[];
 		environment: EnvironmentType;
-		preInit: { (): void }[];
-		preRun: { (): void }[];
-		postRun: { (): void }[];
+		preInit: () => void[];
+		preRun: () => void[];
+		postRun: () => void[];
 		preinitializedWebGLContext: WebGLRenderingContext;
 		noInitialRun: boolean;
 		noExitRuntime: boolean;

@@ -1,5 +1,5 @@
-import { cpus } from "os";
-import * as path from "path";
+import { cpus } from "node:os";
+import * as path from "node:path";
 import type { Encoding } from "./detectors.js";
 
 interface RotateOperation {

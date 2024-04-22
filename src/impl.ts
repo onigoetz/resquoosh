@@ -1,5 +1,5 @@
 import type { EncodeOptions as EncodeAvifOptions } from "./avif/avif_enc.js";
-import { codecs as supportedFormats, preprocessors } from "./codecs.js";
+import { preprocessors, codecs as supportedFormats } from "./codecs.js";
 import type { Encoding } from "./detectors.js";
 import ImageData from "./image_data.js";
 import type { EncodeOptions as EncodeJpegOptions } from "./mozjpeg/mozjpeg_enc.js";

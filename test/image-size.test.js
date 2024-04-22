@@ -1,6 +1,6 @@
 const test = require("ava");
-const fs = require("fs/promises");
-const path = require("path");
+const fs = require("node:fs/promises");
+const path = require("node:path");
 const { getImageSize } = require("../dist/cjs/index.js");
 
 test("cjs webp", async (t) => {

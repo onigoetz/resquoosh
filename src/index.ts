@@ -2,7 +2,7 @@ import { Orientation, getOrientation } from "get-orientation";
 import imageSizeOf from "image-size";
 
 import detectors, { detectCodec } from "./detectors.js";
-import { decodeBuffer, processBuffer, type Operation } from "./main.js";
+import { type Operation, decodeBuffer, processBuffer } from "./main.js";
 
 export interface ImageParamsResult {
 	href: string;

@@ -1,5 +1,5 @@
-import { promises as fsp } from "fs";
-import * as path from "path";
+import { promises as fsp } from "node:fs";
+import * as path from "node:path";
 import type { Encoding } from "./detectors.js";
 import { instantiateEmscriptenWasm, pathify } from "./emscripten-utils.js";
 
