@@ -25,7 +25,7 @@
     "tinypool": "^0.8.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.7.1",
+    "@biomejs/biome": "1.7.2",
     "@onigoetz/gulp-typescript": "^6.0.0-alpha.1",
     "@types/node": "^20.12.7",
     "ava": "^6.1.2",
