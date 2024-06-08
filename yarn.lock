@@ -216,7 +216,7 @@ __metadata:
     c8: ^9.1.0
     get-orientation: ^1.1.2
     image-size: ^1.1.1
-    tinypool: ^0.9.0
+    tinypool: ^1.0.0
     typescript: ^5.2.2
     vinyl-fs: ^4.0.0
   languageName: unknown
@@ -2101,10 +2101,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tinypool@npm:^0.9.0":
-  version: 0.9.0
-  resolution: "tinypool@npm:0.9.0"
-  checksum: 62be97feeda73c16d7b54381a2cee95f33464b8fba86fda8fdc239aeb4b61bfc258c2129d0be9fdce0a9f52d177a0243f86a118be412783656c8a527a965abd4
+"tinypool@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "tinypool@npm:1.0.0"
+  checksum: 59dab87b0811da2dc1ecbac9a99cde93d45450744d4a9fca628d805c452bbb5e5f214fd191127f665d062cae9cc159225dea5508d766e40a0c6c33f573e5c3b6
   languageName: node
   linkType: hard
 
