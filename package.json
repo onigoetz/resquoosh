@@ -42,5 +42,6 @@
 		"check": "biome check .",
 		"test": "ava test/*\\.test\\.* ",
 		"test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.*"
-	}
+	},
+	"packageManager": "yarn@4.4.0"
 }
