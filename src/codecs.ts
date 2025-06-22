@@ -42,12 +42,15 @@ const dirname = __dirname;
 import type { MozJPEGModule as MozJPEGEncodeModule } from "./mozjpeg/mozjpeg_enc";
 // @ts-ignore
 import mozEnc from "./mozjpeg/mozjpeg_node_enc.js";
+
 const mozEncWasm = path.resolve(
 	dirname,
 	"../../codecs/mozjpeg/mozjpeg_node_enc.wasm",
 );
+
 // @ts-ignore
 import mozDec from "./mozjpeg/mozjpeg_node_dec.js";
+
 const mozDecWasm = path.resolve(
 	dirname,
 	"../../codecs/mozjpeg/mozjpeg_node_dec.wasm",
@@ -57,12 +60,15 @@ const mozDecWasm = path.resolve(
 import type { WebPModule as WebPEncodeModule } from "./webp/webp_enc";
 // @ts-ignore
 import webpEnc from "./webp/webp_node_enc.js";
+
 const webpEncWasm = path.resolve(
 	dirname,
 	"../../codecs/webp/webp_node_enc.wasm",
 );
+
 // @ts-ignore
 import webpDec from "./webp/webp_node_dec.js";
+
 const webpDecWasm = path.resolve(
 	dirname,
 	"../../codecs/webp/webp_node_dec.wasm",
@@ -72,12 +78,15 @@ const webpDecWasm = path.resolve(
 import type { AVIFModule as AVIFEncodeModule } from "./avif/avif_enc";
 // @ts-ignore
 import avifEnc from "./avif/avif_node_enc.js";
+
 const avifEncWasm = path.resolve(
 	dirname,
 	"../../codecs/avif/avif_node_enc.wasm",
 );
+
 // @ts-ignore
 import avifDec from "./avif/avif_node_dec.js";
+
 const avifDecWasm = path.resolve(
 	dirname,
 	"../../codecs/avif/avif_node_dec.wasm",
@@ -86,6 +95,7 @@ const avifDecWasm = path.resolve(
 // PNG
 // @ts-ignore
 import * as pngEncDec from "./png/squoosh_png.js";
+
 const pngEncDecWasm = path.resolve(
 	dirname,
 	"../../codecs/png/squoosh_png_bg.wasm",
@@ -96,6 +106,7 @@ const pngEncDecInit = () =>
 // OxiPNG
 // @ts-ignore
 import * as oxipng from "./png/squoosh_oxipng.js";
+
 const oxipngWasm = path.resolve(
 	dirname,
 	"../../codecs/png/squoosh_oxipng_bg.wasm",
@@ -105,6 +116,7 @@ const oxipngInit = () => oxipng.default(fsp.readFile(pathify(oxipngWasm)));
 // Resize
 // @ts-ignore
 import * as resize from "./resize/squoosh_resize.js";
+
 const resizeWasm = path.resolve(
 	dirname,
 	"../../codecs/resize/squoosh_resize_bg.wasm",
@@ -116,6 +128,7 @@ const rotateWasm = path.resolve(dirname, "../../codecs/rotate/rotate.wasm");
 
 // Our decoders currently rely on a `ImageData` global.
 import ImageData from "./image_data.js";
+
 (globalThis as any).ImageData = ImageData;
 
 function resizeNameToIndex(

@@ -1,8 +1,8 @@
-import { Orientation, getOrientation } from "get-orientation";
+import { getOrientation, Orientation } from "get-orientation";
 import imageSizeOf from "image-size";
 
 import detectors, { detectCodec } from "./detectors.js";
-import { type Operation, decodeBuffer, processBuffer } from "./main.js";
+import { decodeBuffer, type Operation, processBuffer } from "./main.js";
 
 export interface ImageParamsResult {
 	href: string;
