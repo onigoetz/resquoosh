@@ -8,7 +8,10 @@ import type { EncodeOptions as EncodeWebpOptions } from "./webp/webp_enc.js";
 export async function decodeBuffer({
 	buffer: _buffer,
 	encoding,
-}: { buffer: Buffer | Uint8Array; encoding: Encoding }): Promise<ImageData> {
+}: {
+	buffer: Buffer | Uint8Array;
+	encoding: Encoding;
+}): Promise<ImageData> {
 	const buffer = Buffer.from(_buffer);
 	const encoder = supportedFormats[encoding];
 	const mod = await encoder.dec();
@@ -19,7 +22,10 @@ export async function decodeBuffer({
 export async function rotate({
 	image,
 	numRotations,
-}: { image: ImageData; numRotations: number }): Promise<ImageData> {
+}: {
+	image: ImageData;
+	numRotations: number;
+}): Promise<ImageData> {
 	image = ImageData.from(image);
 
 	const m = await preprocessors.rotate.instantiate();
@@ -51,7 +57,10 @@ export async function resize({
 export async function encodeJpeg({
 	image,
 	quality,
-}: { image: ImageData; quality?: number }): Promise<Buffer | Uint8Array> {
+}: {
+	image: ImageData;
+	quality?: number;
+}): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
 	const e = supportedFormats.mozjpeg;
@@ -69,7 +78,10 @@ export async function encodeJpeg({
 export async function encodeWebp({
 	image,
 	quality,
-}: { image: ImageData; quality?: number }): Promise<Buffer | Uint8Array> {
+}: {
+	image: ImageData;
+	quality?: number;
+}): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
 	const e = supportedFormats.webp;
@@ -87,7 +99,10 @@ export async function encodeWebp({
 export async function encodeAvif({
 	image,
 	quality,
-}: { image: ImageData; quality?: number }): Promise<Buffer | Uint8Array> {
+}: {
+	image: ImageData;
+	quality?: number;
+}): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
 	const e = supportedFormats.avif;
@@ -111,7 +126,9 @@ export async function encodeAvif({
 
 export async function encodePng({
 	image,
-}: { image: ImageData }): Promise<Buffer | Uint8Array> {
+}: {
+	image: ImageData;
+}): Promise<Buffer | Uint8Array> {
 	image = ImageData.from(image);
 
 	const e = supportedFormats.oxipng;

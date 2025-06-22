@@ -1,16 +1,14 @@
 {
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
 	"files": {
-		"ignore": [
-			"dist/*",
-			"src/avif/*",
-			"src/mozjpeg/*",
-			"src/png/*",
-			"src/resize/*",
-			"src/webp/*"
+		"includes": [
+			"**",
+			"!dist/*",
+			"!src/avif/*",
+			"!src/mozjpeg/*",
+			"!src/png/*",
+			"!src/resize/*",
+			"!src/webp/*"
 		]
 	},
 	"linter": {
