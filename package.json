@@ -1,6 +1,6 @@
 {
 	"name": "@onigoetz/resquoosh",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"repository": "onigoetz/resquoosh",
 	"main": "dist/cjs/index.js",
 	"module": "dist/mjs/index.js",
