@@ -15,7 +15,7 @@ interface ResizeOperation {
 export type Operation = RotateOperation | ResizeOperation;
 
 // Using async dispose, which might not be defined yet
-//@ts-ignore
+//@ts-expect-error
 Symbol.dispose ??= Symbol("Symbol.dispose");
 
 interface RunOptions {
