@@ -28,7 +28,7 @@
 		"tinypool": "^2.0.0"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.4.16",
+		"@biomejs/biome": "2.5.2",
 		"@onigoetz/gulp-typescript": "^6.0.0-alpha.1",
 		"@types/node": "^22.0.0",
 		"ava": "^6.1.2",
@@ -43,5 +43,5 @@
 		"test": "ava test/*\\.test\\.* ",
 		"test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.*"
 	},
-	"packageManager": "yarn@4.16.0"
+	"packageManager": "yarn@4.17.0"
 }

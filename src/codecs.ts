@@ -40,7 +40,6 @@ const dirname = __dirname;
 
 // MozJPEG
 import type { MozJPEGModule as MozJPEGEncodeModule } from "./mozjpeg/mozjpeg_enc";
-// @ts-ignore
 import mozEnc from "./mozjpeg/mozjpeg_node_enc.js";
 
 const mozEncWasm = path.resolve(
@@ -48,7 +47,6 @@ const mozEncWasm = path.resolve(
 	"../../codecs/mozjpeg/mozjpeg_node_enc.wasm",
 );
 
-// @ts-ignore
 import mozDec from "./mozjpeg/mozjpeg_node_dec.js";
 
 const mozDecWasm = path.resolve(
@@ -58,7 +56,6 @@ const mozDecWasm = path.resolve(
 
 // WebP
 import type { WebPModule as WebPEncodeModule } from "./webp/webp_enc";
-// @ts-ignore
 import webpEnc from "./webp/webp_node_enc.js";
 
 const webpEncWasm = path.resolve(
@@ -66,7 +63,6 @@ const webpEncWasm = path.resolve(
 	"../../codecs/webp/webp_node_enc.wasm",
 );
 
-// @ts-ignore
 import webpDec from "./webp/webp_node_dec.js";
 
 const webpDecWasm = path.resolve(
@@ -76,7 +72,6 @@ const webpDecWasm = path.resolve(
 
 // AVIF
 import type { AVIFModule as AVIFEncodeModule } from "./avif/avif_enc";
-// @ts-ignore
 import avifEnc from "./avif/avif_node_enc.js";
 
 const avifEncWasm = path.resolve(
@@ -84,7 +79,6 @@ const avifEncWasm = path.resolve(
 	"../../codecs/avif/avif_node_enc.wasm",
 );
 
-// @ts-ignore
 import avifDec from "./avif/avif_node_dec.js";
 
 const avifDecWasm = path.resolve(
@@ -93,7 +87,6 @@ const avifDecWasm = path.resolve(
 );
 
 // PNG
-// @ts-ignore
 import * as pngEncDec from "./png/squoosh_png.js";
 
 const pngEncDecWasm = path.resolve(
@@ -104,7 +97,6 @@ const pngEncDecInit = () =>
 	pngEncDec.default(fsp.readFile(pathify(pngEncDecWasm)));
 
 // OxiPNG
-// @ts-ignore
 import * as oxipng from "./png/squoosh_oxipng.js";
 
 const oxipngWasm = path.resolve(
@@ -114,7 +106,6 @@ const oxipngWasm = path.resolve(
 const oxipngInit = () => oxipng.default(fsp.readFile(pathify(oxipngWasm)));
 
 // Resize
-// @ts-ignore
 import * as resize from "./resize/squoosh_resize.js";
 
 const resizeWasm = path.resolve(
