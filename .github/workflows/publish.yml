@@ -16,15 +16,9 @@ jobs:
         node-version: '22.x'
         # required for credentials to be taken in account
         registry-url: 'https://registry.npmjs.org'
-    - name: Install latest npm
-      run: npm install -g npm
     - name: Install
       run: yarn install
-    - name: Build
-      run: yarn build
     - name: Test
       run: yarn test
     - name: Publish
-      run: npm publish --provenance --access public
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      run: yarn npm publish --provenance --access public
