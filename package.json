@@ -24,8 +24,8 @@
 	},
 	"dependencies": {
 		"get-orientation": "^1.1.2",
-		"image-size": "^2.0.0",
-		"tinypool": "^2.0.0"
+		"image-size": "^2.0.2",
+		"tinypool": "^2.1.0"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.5",
@@ -33,7 +33,7 @@
 		"@types/node": "^22.0.0",
 		"@vitest/coverage-v8": "^4.1.10",
 		"typescript": "^5.2.2",
-		"vinyl-fs": "^4.0.0",
+		"vinyl-fs": "^4.0.2",
 		"vitest": "^4.1.10"
 	},
 	"scripts": {
