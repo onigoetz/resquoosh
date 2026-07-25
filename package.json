@@ -20,7 +20,7 @@
 		"./impl.cjs": "./dist/cjs/impl.js"
 	},
 	"engines": {
-		"node": ">=18.0.0"
+		"node": ">=20.0.0"
 	},
 	"dependencies": {
 		"get-orientation": "^1.1.2",
@@ -31,17 +31,17 @@
 		"@biomejs/biome": "2.5.5",
 		"@onigoetz/gulp-typescript": "^6.0.0-alpha.1",
 		"@types/node": "^22.0.0",
-		"ava": "^6.1.2",
-		"c8": "^10.0.0",
+		"@vitest/coverage-v8": "^4.1.10",
 		"typescript": "^5.2.2",
-		"vinyl-fs": "^4.0.0"
+		"vinyl-fs": "^4.0.0",
+		"vitest": "^4.1.10"
 	},
 	"scripts": {
 		"build": "./build.sh",
 		"format": "biome format .",
 		"check": "biome check .",
-		"test": "ava test/*\\.test\\.* ",
-		"test:ci": "c8 --clean --reporter=text --reporter=lcov --reporter=html ava test/*\\.test\\.*"
+		"test": "vitest run",
+		"test:ci": "vitest run --coverage"
 	},
 	"packageManager": "yarn@4.17.1"
 }

@@ -1,6 +1,11 @@
-const test = require("ava");
-const fs = require("node:fs/promises");
-const path = require("node:path");
+import fs from "node:fs/promises";
+import { createRequire } from "node:module";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { expect, test } from "vitest";
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const require = createRequire(import.meta.url);
 const { optimizeImage } = require("../dist/cjs/index.js");
 
 const filesToCompress = [
@@ -17,25 +22,19 @@ const filesToPassThrough = [
 ];
 
 for (const [name, fileName] of filesToCompress) {
-	test(`cjs ${name}`, async (t) => {
-		const file = await fs.readFile(path.join(__dirname, fileName));
+	test(`cjs ${name}`, async () => {
+		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
-		t.truthy(
-			result.length < file.length,
-			`result file (${result.length}) must be smaller than its source (${file.length})`,
-		);
+		expect(result.length).toBeLessThan(file.length);
 	});
 }
 
 for (const [name, fileName] of filesToPassThrough) {
-	test(`cjs ${name}`, async (t) => {
-		const file = await fs.readFile(path.join(__dirname, fileName));
+	test(`cjs ${name}`, async () => {
+		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
-		t.truthy(
-			result.length === file.length,
-			`result file (${result.length}) must be identical to its source (${file.length})`,
-		);
+		expect(result.length).toBe(file.length);
 	});
 }

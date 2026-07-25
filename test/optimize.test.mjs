@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import test from "ava";
+import { expect, test } from "vitest";
 import { optimizeImage } from "../dist/mjs/index.js";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -20,25 +20,19 @@ const filesToPassThrough = [
 ];
 
 for (const [name, fileName] of filesToCompress) {
-	test(`mjs ${name}`, async (t) => {
+	test(`mjs ${name}`, async () => {
 		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
-		t.truthy(
-			result.length < file.length,
-			`result file (${result.length}) must be smaller than its source (${file.length})`,
-		);
+		expect(result.length).toBeLessThan(file.length);
 	});
 }
 
 for (const [name, fileName] of filesToPassThrough) {
-	test(`mjs ${name}`, async (t) => {
+	test(`mjs ${name}`, async () => {
 		const file = await fs.readFile(path.join(dirname, fileName));
 		const result = await optimizeImage(file);
 
-		t.truthy(
-			result.length === file.length,
-			`result file (${result.length}) must be identical to its source (${file.length})`,
-		);
+		expect(result.length).toBe(file.length);
 	});
 }

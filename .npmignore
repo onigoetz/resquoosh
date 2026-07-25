@@ -4,7 +4,7 @@ src/
 test/
 coverage/
 
-ava.config.js
+vitest.config.ts
 biome.json
 tsconfig.json
 .yarnrc.yml
