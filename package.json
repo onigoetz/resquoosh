@@ -43,5 +43,5 @@
 		"test": "vitest run",
 		"test:ci": "vitest run --coverage"
 	},
-	"packageManager": "yarn@4.17.1"
+	"packageManager": "yarn@4.18.0"
 }
