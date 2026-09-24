@@ -34,6 +34,7 @@
 		"@vitest/coverage-v8": "^5.0.0",
 		"typescript": "^5.2.2",
 		"vinyl-fs": "^4.0.2",
+		"vite": "^8.0.0",
 		"vitest": "^5.0.0"
 	},
 	"scripts": {
