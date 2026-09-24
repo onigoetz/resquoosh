@@ -30,7 +30,7 @@ export interface EncodeOptions {
 
 export interface WebPModule extends EmscriptenWasm.Module {
 	encode(
-		data: BufferSource,
+		data: ArrayBufferView | ArrayBuffer,
 		width: number,
 		height: number,
 		options: EncodeOptions,
