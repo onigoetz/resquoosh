@@ -255,7 +255,7 @@ interface Codec {
 	}>;
 	enc: () => Promise<{
 		encode(
-			data: BufferSource,
+			data: ArrayBufferView | ArrayBuffer,
 			width: number,
 			height: number,
 			options: any,

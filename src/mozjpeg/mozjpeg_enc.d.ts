@@ -26,7 +26,7 @@ export interface EncodeOptions {
 
 export interface MozJPEGModule extends EmscriptenWasm.Module {
 	encode(
-		data: BufferSource,
+		data: ArrayBufferView | ArrayBuffer,
 		width: number,
 		height: number,
 		options: EncodeOptions,
