@@ -31,10 +31,11 @@
 		"@biomejs/biome": "2.5.14",
 		"@onigoetz/gulp-typescript": "^6.0.0-alpha.1",
 		"@types/node": "^22.0.0",
-		"@vitest/coverage-v8": "^4.1.10",
+		"@vitest/coverage-v8": "^5.0.0",
 		"typescript": "^5.2.2",
 		"vinyl-fs": "^4.0.2",
-		"vitest": "^4.1.10"
+		"vite": "^8.0.0",
+		"vitest": "^5.0.0"
 	},
 	"scripts": {
 		"build": "./build.sh",
