@@ -44,17 +44,17 @@ Compresses images, optionally resize or rotate the image.
 
 ```typescript
 interface OptimizeOptions {
-    /**
-     * Value between 1 and 100
-     */ 
+	/**
+	 * Value between 1 and 100
+	 */
 	quality?: number;
-    /**
-     * If only width is specified; will resize and respect ratio
-     */
+	/**
+	 * If only width is specified; will resize and respect ratio
+	 */
 	width?: number;
-    /**
-     * If only height is specified; will resize and respect ratio
-     */
+	/**
+	 * If only height is specified; will resize and respect ratio
+	 */
 	height?: number;
 }
 ```
