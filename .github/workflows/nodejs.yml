@@ -18,26 +18,26 @@ jobs:
         os: [ubuntu-latest]
         node-version: [20.x, 22.x, 24.x]
         include:
-        - os: macos-latest
-          node-version: 22.x
-        # TODO : add Windows build
-        #- os: windows-latest
-        #  node-version: 16.x
-          
+          - os: macos-latest
+            node-version: 22.x
+          # TODO : add Windows build
+          #- os: windows-latest
+          #  node-version: 16.x
+
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v7
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'yarn'
-    - name: yarn install
-      run: yarn install
-    - name: yarn build
-      run: yarn build
-    - name: Testing
-      run: yarn test:ci
-      env:
-        CI: true
+      - uses: actions/checkout@v7
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "yarn"
+      - name: yarn install
+        run: yarn install
+      - name: yarn build
+        run: yarn build
+      - name: Testing
+        run: yarn test:ci
+        env:
+          CI: true
